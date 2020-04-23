@@ -1,0 +1,9 @@
+{
+    "name": "Remove Role",
+    "author": "Squidd",
+    "aliases": [
+        "iamnot"
+    ],
+    "description": "Removes a users an assignable role",
+    "example": "!iamnot <role name>"
+}

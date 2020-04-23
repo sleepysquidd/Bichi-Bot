@@ -1,0 +1,16 @@
+async function(args, msg) {
+    if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send(`You don't have permission to do that!`);
+    if(args.includes(" ")) args = args.split(" ");
+
+    if(!args[0]) {
+        if(fs.existsSync(`./${msg.guild.id}/muterole`)) {
+            return msg.channel.send(`Current mute role selected: `+msg.guild.roles.find(role => role.id == fs.readFileSync(`./${msg.guild.id}/muterole`)));
+        } else {
+            return msg.channel.send(`No mute role is specified!`);
+        }
+    }
+
+    var mRole = msg.guild.roles.find(role => role.name.toLowerCase().includes(args[0]));
+    if(!mRole) return msg.channel.send(`Couldn't find the role \`${args[0]}\``);
+    fs.writeFile(`./${msg.guild.id}/muterole`, mRole.id);
+}

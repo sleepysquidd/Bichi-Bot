@@ -1,0 +1,9 @@
+{
+    "name": "Unload",
+    "author": "Squidd",
+    "aliases": [
+        "unload"
+    ],
+    "description": "Unloads a command or module",
+    "example": "!unload <command/module> <command/module name>"
+}

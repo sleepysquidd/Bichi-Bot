@@ -1,0 +1,16 @@
+async function(args, msg) {
+    if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send(`You don't have permission to do that!`);
+    if(args.includes(" ")) args = args.split(" ");
+
+    if(!args[0]) {
+        if(fs.existsSync(`./${msg.guild.id}/welcomechannel`)) {
+            return msg.channel.send(`Current welcome channel selected: `+msg.guild.roles.find(role => role.id == fs.readFileSync(`./${msg.guild.id}/welcomechannel`)));
+        } else {
+            return msg.channel.send(`No welcome channel is specified!`);
+        }
+    }
+
+    var wChan = msg.guild.channels.find(chan => chan.name.toLowerCase().includes(args[0]) && chan.type == 'text');
+    if(!wChan) return msg.channel.send(`Couldn't find the role \`${args[0]}\``);
+    fs.writeFile(`./${msg.guild.id}/welcomechannel`, wChan.id);
+}

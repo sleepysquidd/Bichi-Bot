@@ -1,0 +1,9 @@
+{
+    "name": "Say",
+    "author": "Squidd",
+    "aliases": [
+        "say"
+    ],
+    "description": "Makes the bot say something!",
+    "example": "!say <message>"
+}

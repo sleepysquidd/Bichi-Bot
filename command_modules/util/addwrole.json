@@ -1,0 +1,9 @@
+{
+    "name": "Add Welcome Role",
+    "author": "Squidd",
+    "aliases": [
+        "addwrole"
+    ],
+    "description": "Adds a welcome role to the self assignable list",
+    "example": "!addwrole <role name>"
+}

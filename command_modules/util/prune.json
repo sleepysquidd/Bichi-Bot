@@ -1,0 +1,9 @@
+{
+    "name": "Prune",
+    "author": "Squidd",
+    "aliases": [
+        "prune"
+    ],
+    "description": "Prunes a specified amount of messages",
+    "example": "!prune <amount>"
+}

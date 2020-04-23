@@ -1,0 +1,68 @@
+async function(args, msg) {
+    return;
+    if(!args.includes(" ") || !args.includes(`"`)) {
+        msg.channel.send(`Incorrect format!`);
+        return commands['help']("poll", msg);
+    }
+    let time = args.split(" ")[0];
+    if(isNaN(time)) return msg.channel.send(`That isn't a valid number!`);
+
+    let options = args.split(`"`).slice(1);
+    let choices = [];
+    for(let i=0;i<options.length;i++) {
+        if(options[i] && options[i] != ` ` && i!=0) choices.push(options[i]);
+    }
+    let embed = {
+            "embed": {
+                "title": "Polling time!",
+                "description": options[0],
+                "color": 16748526,
+                "timestamp": new Date(),
+                "fields": [
+                ]
+            }
+            }
+        for(let i=0;i<choices.length;i++) {
+            embed['embed'].fields.push({
+                "name": choices[i],
+                "value": toEmoji(i+1)
+            });
+        }
+    let msgMon = await msg.channel.send(embed);
+    for(let i=0;i<choices.length;i++) {
+        let unicodes = ['\u0031\u20E3','\u0032\u20E3','\u0033\u20E3','\u0034\u20E3','\u0035\u20E3','\u0036\u20E3',
+        '\u0037\u20E3','\u0038\u20E3','\u0039\u20E3','\u0040\u20E3'];
+        
+        msgMon.react(unicodes[i]);
+    }
+    setTimeout(function() {
+        msgMon.reactions.forEach(function(i) {
+            console.log(i.name+"\n"+i.count);
+        });
+    }, time * 60000);
+}
+
+function toEmoji(arg) {
+    switch(arg) {
+        case 1:
+            return ":one:";
+        case 2:
+            return ":two:";
+        case 3:
+            return ":three:";
+        case 4:
+            return ":four:";
+        case 5:
+            return ":five:";
+        case 6:
+            return ":six:";
+        case 7:
+            return ":seven:";
+        case 8:
+            return ":eight:";
+        case 9:
+            return ":nine:";
+        case 10:
+            return ":ten:";
+    }
+}

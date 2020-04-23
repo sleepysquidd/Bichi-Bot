@@ -1,0 +1,15 @@
+function(args, msg) {
+    if(args.includes(" ")) args = args.split(" ");
+    if(args.length < 2) return msg.channel.send(`You need a time AND a message!`);
+    var time = args[0];
+    args = args.slice(1).join(" ");
+    if(isNaN(time)) return msg.channel.send(`The first parameter MUST be a number!`);
+    var newObj = 
+        {
+            "userid": msg.author.id,
+            "channelid": msg.channel.id,
+            "message": args
+        };
+    let timestamp = new Date();
+    fs.writeFile(`./${msg.guild.id}/reminders/${new Date(timestamp.getTime()+(time*60000)).getTime()}`, JSON.stringify(newObj));
+}

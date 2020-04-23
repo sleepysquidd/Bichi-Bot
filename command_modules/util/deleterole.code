@@ -1,0 +1,25 @@
+function(args, msg) {
+    if(!msg.member.hasPermission(`MANAGE_ROLES`)) return msg.channel.send(`You don't have permission to do that!`);
+    if(!args[0]) return msg.channel.send(`You need to specify a role!`);
+    if(!args[1]) args = args[0];
+
+    try {
+        var found=false;
+        var dat = selfassignroles.get(msg.guild.id);
+        for(var i=0;i<dat.length;i++) {
+            if(dat[i].name.toLowerCase().includes(args)) {
+                dat.splice(i, 1);
+                found = true;
+            }
+        }
+        if(!found) return msg.channel.send(`That role is not in the self assign list!`);
+        console.log(dat);
+        var file = JSON.parse(fs.readFileSync(`./${msg.guild.id}/roles`));
+        file.roles = dat;
+        console.log(file);
+        fs.writeFileSync(`./${msg.guild.id}/roles`, JSON.stringify(file));
+
+    } catch(err) {
+        console.log(`No self assign role for this server!`);
+    }
+}

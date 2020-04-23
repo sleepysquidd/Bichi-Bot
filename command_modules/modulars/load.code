@@ -1,0 +1,33 @@
+async function(args, msg) {
+    if(!msg.member.hasPermission("ADMINISTRATOR")) {
+        msg.channel.send("You don't have permission to do this!");
+        return;
+    }
+    if(args.includes(" ")) args = args.split(" ");
+    
+    if(args[0] == "module") {
+        try {
+            fs.readdirSync(modules).forEach(function(i) {
+                fs.readdirSync(modules+"/"+i).forEach(function(n) {
+                    eval("commands['"+n+"'] = "+fs.readFileSync(modules+"/"+i+"/"+n));
+                });
+            });
+        } catch (err) {
+            msg.channel.send("No module exists called `"+args[1]+"`");
+        }
+    } else if (args[0] == "command") {
+        try {
+            fs.readdirSync(modules).forEach(function(i) {
+                fs.readdirSync(modules+"/"+i).forEach(function(n) {
+                    if(n==args[1]+".code") {
+                        eval("commands['"+n.split(".")[0]+"'] = "+fs.readFileSync(`${modules}/${i}/${n}`));
+                    }
+                });
+            });
+        } catch (err) {
+            msg.channel.send("No command exists called `"+args[1]+"`");
+        }
+    } else {
+        msg.channel.send("Invalid format! Try `!load <command/module> <name>`");
+    }
+}

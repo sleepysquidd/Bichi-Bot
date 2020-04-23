@@ -1,0 +1,9 @@
+{
+    "name": "List Roles",
+    "author": "Squidd",
+    "aliases": [
+        "roles"
+    ],
+    "description": "Shows all self assignable roles for the server",
+    "example": "!roles"
+}

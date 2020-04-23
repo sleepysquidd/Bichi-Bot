@@ -1,0 +1,9 @@
+{
+    "name": "Voice Role",
+    "author": "Squidd",
+    "aliases": [
+        "voicerole"
+    ],
+    "description": "Selects the role to apply to users when joining voicechat",
+    "example": "!voicerole <role name>"
+}

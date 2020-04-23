@@ -1,0 +1,16 @@
+async function(args, msg) {
+    if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send(`You don't have permission to do that!`);
+    if(args.includes(" ")) args = args.split(" ");
+
+    if(!args[0]) {
+        if(fs.existsSync(`./${msg.guild.id}/privatelogchannel`)) {
+            return msg.channel.send(`Current private log channel selected: `+msg.guild.channels.find(channel => channel.id == fs.readFileSync(`./${msg.guild.id}/privatelogchannel`)));
+        } else {
+            return msg.channel.send(`No private log channel is specified!`);
+        }
+    }
+
+    var mChan = msg.guild.channels.find(channel => channel.name.toLowerCase().includes(args[0]));
+    if(!mChan) return msg.channel.send(`Couldn't find the channel \`${args[0]}\``);
+    fs.writeFile(`./${msg.guild.id}/privatelogchannel`, mChan.id);
+}

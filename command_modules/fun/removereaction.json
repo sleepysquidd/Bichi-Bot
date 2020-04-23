@@ -1,0 +1,9 @@
+{
+    "name": "Remove Reaction",
+    "author": "Squidd",
+    "aliases": [
+        "removereaction"
+    ],
+    "description": "Removes a reaction from the bot!",
+    "example": "!removereaction <target word>"
+}

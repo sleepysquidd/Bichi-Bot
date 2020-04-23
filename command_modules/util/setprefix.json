@@ -1,0 +1,10 @@
+{
+    "name": "Set Prefix",
+    "author": "Squidd",
+    "aliases": [
+        "setprefix",
+        "prefix"
+    ],
+    "description": "Sets the current prefix",
+    "example": "!setprefix <prefix>"
+}

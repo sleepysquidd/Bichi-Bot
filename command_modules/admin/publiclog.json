@@ -1,0 +1,9 @@
+{
+    "name": "Public Log",
+    "author": "Squidd",
+    "aliases": [
+        "publiclog"
+    ],
+    "description": "Specifies to channel to post public logs in",
+    "example": "!publiclog <channel name>"
+}

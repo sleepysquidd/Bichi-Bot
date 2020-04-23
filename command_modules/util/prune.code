@@ -1,0 +1,6 @@
+async function(args, msg) {
+    if(!msg.member.hasPermission("MANAGE_MESSAGES")) return msg.channel.send(`You don't have permission to do that!`);
+    if(args.includes(" ")) args = args.split(" ");
+    msg.channel.fetchMessages({limit: parseInt(args[0])+1})
+    .then(messages => msg.channel.bulkDelete(messages));
+}

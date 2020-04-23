@@ -1,0 +1,9 @@
+{
+    "name": "Delete Role",
+    "author": "Squidd",
+    "aliases": [
+        "removerole"
+    ],
+    "description": "Adds a role to the self assignable list",
+    "example": "!addrole <role name>"
+}

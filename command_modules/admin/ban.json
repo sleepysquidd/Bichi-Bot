@@ -1,0 +1,9 @@
+{
+    "name": "Ban",
+    "author": "Squidd",
+    "aliases": [
+        "ban"
+    ],
+    "description": "Bans the specified user",
+    "example": "!ban <user>"
+}

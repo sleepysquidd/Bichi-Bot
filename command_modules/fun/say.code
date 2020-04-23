@@ -1,0 +1,5 @@
+function(args, msg) {
+    let content = args;
+    msg.delete();
+    msg.channel.send(content);
+}

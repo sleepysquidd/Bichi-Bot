@@ -1,0 +1,38 @@
+function(args, msg) {
+    if(args.includes(" ")) args = args.split(" ");
+    if(!msg.member.hasPermission("BAN_MEMBERS")) return msg.channel.send(`You don't have permission to do that!`);
+    if(!args[0]) return msg.channel.send(`You need to specify a user!`);
+    var usr = msg.mentions.members.first() || msg.guild.members.find(usr => usr.displayName.toLowerCase().includes(args[0]));
+    if(!usr) return msg.channel.send(`User \`${args[0]}\` not found!`);
+    if(usr.hasPermission) return msg.channel.send(`I can't ban \`${usr.displayName}\`!`);
+    
+    if(args[1]) {
+        usr.ban(
+            {
+                "options.days": (Math.ceil((new Date().getTime()-usr.joinedAt.getTime())/(1000*3600*24))),
+                "options.reason": args[1]
+            });
+    } else {
+        usr.ban(parseInt(Math.ceil((new Date().getTime()-usr.joinedAt.getTime())/(1000*3600*24))));
+    }
+    if(fs.existsSync(`./${msg.guild.id}/publiclogchannel`)) {
+        let mChan = msg.guild.channels.find(channel => channel.id == fs.readFileSync(`./${msg.guild.id}/publiclogchannel`));
+        mChan.send({
+            "embed": {
+                "title": ":gun:Ban log!",
+                "description": usr.user.tag,
+                "color": 16748526,
+                "timestamp": new Date(),
+                "thumbnail": {
+                    "url": usr.user.avatarURL
+                },
+                "fields": [
+                    {
+                        "name":"ID",
+                        "value":usr.user.id
+                    }
+                ]
+            }
+            });
+    }
+}

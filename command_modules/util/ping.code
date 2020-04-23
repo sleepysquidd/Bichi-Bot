@@ -1,0 +1,3 @@
+function(args, msg) {
+    msg.channel.send(`:ping_pong: pong! \`${Math.floor(client.ping)}ms\``);
+}

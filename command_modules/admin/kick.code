@@ -1,0 +1,35 @@
+function(args, msg) {
+    if(args.includes(" ")) args = args.split(" ");
+    if(!msg.member.hasPermission("KICK_MEMBERS")) return msg.channel.send(`You don't have permission to do that!`);
+    if(!args[0]) return msg.channel.send(`You need to specify a user!`);
+    var usr = msg.mentions.members.first() || msg.guild.members.find(usr => usr.displayName.toLowerCase().includes(args[0]));
+    if(!usr) return msg.channel.send(`User \`${args[0]}\` not found!`);
+    if(usr.hasPermission) return msg.channel.send(`I can't kick \`${usr.displayName}\`!`);
+
+    if(args[1]) {
+        usr.kick(args[1]);
+    } else {
+        usr.kick();
+    }
+
+    if(fs.existsSync(`./${msg.guild.id}/publiclogchannel`)) {
+        let mChan = msg.guild.channels.find(channel => channel.id == fs.readFileSync(`./${msg.guild.id}/publiclogchannel`));
+        mChan.send({
+            "embed": {
+                "title": ":gun:Ban log!",
+                "description": "<User>",
+                "color": 16748526,
+                "timestamp": new Date(),
+                "thumbnail": {
+                "url": "https://cdn.discordapp.com/embed/avatars/0.png"
+                },
+                "fields": [
+                    {
+                        "name":"ID",
+                        "value":"<User's id>"
+                    }
+                ]
+            }
+            });
+    }
+}

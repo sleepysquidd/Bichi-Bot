@@ -1,0 +1,14 @@
+function(args, msg) {
+    if(!msg.member.hasPermission(`MANAGE_ROLES`)) return msg.channel.send(`You don't have permission to do that!`);
+    if(!args[0]) return msg.channel.send(`You need to specify a role!`);
+    if(!args[1]) args = args[0];
+
+    try {
+        var addrole = msg.guild.roles.find(r => r.name.toLowerCase().includes(args));
+        if(!addrole) return msg.channel.send(`Couldn't find the role \`${args}\` ${client.emojis.find(e => e.name == "feelsbad")}`);
+        fs.writeFileSync(`./${msg.guild.id}/welcomerole`, addrole.id);
+
+    } catch(err) {
+        console.log(`No self assign role for this server!`);
+    }
+}

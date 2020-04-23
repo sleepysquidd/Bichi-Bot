@@ -1,0 +1,9 @@
+{
+    "name": "Commands",
+    "author": "Squidd",
+    "aliases": [
+        "commands"
+    ],
+    "description": "Locally logs all loaded commands",
+    "example": "!commands"
+}

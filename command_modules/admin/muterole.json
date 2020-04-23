@@ -1,0 +1,9 @@
+{
+    "name": "Mute Role",
+    "author": "Squidd",
+    "aliases": [
+        "muterole"
+    ],
+    "description": "Selects the role to apply to muted users",
+    "example": "!muterole <role name>"
+}

@@ -1,0 +1,32 @@
+function(args, msg) {
+    if(args.includes(" ")) args = args.split(" ");
+    if(!msg.member.hasPermission("MUTE_MEMBERS")) return msg.channel.send(`You don't have permission to do that!`);
+    if(!args[0]) return msg.channel.send(`You need to specify a user!`);
+    var usr = msg.mentions.members.first() || msg.guild.members.find(usr => usr.displayName.toLowerCase().includes(args[0]));
+    if(!usr) return msg.channel.send(`User \`${args[0]}\` not found!`);
+    
+    if(fs.existsSync(`./${msg.guild.id}/muterole`)) {
+        let mRole = msg.guild.roles.find(role => role.id == fs.readFileSync(`./${msg.guild.id}/muterole`));
+        if(usr.roles.array().includes(mRole)) return msg.channel.send(`User is already muted!`);
+
+        usr.addRole(mRole);
+        if(fs.existsSync(`./${msg.guild.id}/privatelogchannel`)) {
+            let mChan = msg.guild.channels.find(channel => channel.id == fs.readFileSync(`./${msg.guild.id}/privatelogchannel`));
+            mChan.send({
+                "embed": {
+                    "title": ":mute:Mute log!",
+                    "timestamp": new Date(),
+                    "color": 16748526,
+                    "fields": [
+                        {
+                            "name": `User muted by ${msg.author.tag}`,
+                            "value": usr.user.tag
+                        }
+                    ]
+                }
+            });
+        }
+    } else {
+        return msg.channel.send(`Cannot mute user because there isn't a set mute role!`);
+    }
+}

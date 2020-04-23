@@ -1,0 +1,9 @@
+{
+    "name": "Add Reminder",
+    "author": "Squidd",
+    "aliases": [
+        "addreminder"
+    ],
+    "description": "Adds a reminder!",
+    "example": "!addreminder <time in minutes> <message>"
+}

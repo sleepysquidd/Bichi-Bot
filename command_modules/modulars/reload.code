@@ -1,0 +1,21 @@
+function(args, msg) {
+    if(!msg.member.hasPermission("ADMINISTRATOR")) {
+        msg.channel.send("You don't have permission to do this!");
+        return;
+    }
+    if(args.includes(" ")) {
+        args = args.split(" ");
+    }
+
+    if(args[0] == "module") {
+        commands['unload'](`module ${args[1]}`, msg);
+        commands['load'](`module ${args[1]}`, msg);
+        msg.channel.send(`Reloaded \`${args[1]}\` module!`);
+    } else if (args[0] == "command") {
+        commands['unload'](`command ${args[1]}`, msg);
+        commands['load'](`command ${args[1]}`, msg);
+        msg.channel.send(`Reloaded \`${args[1]}\` command!`);
+    } else {
+        msg.channel.send("Invalid format! Try `!reload <command/module> <name>`");
+    }
+}

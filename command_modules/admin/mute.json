@@ -1,0 +1,9 @@
+{
+    "name": "Mute",
+    "author": "Squidd",
+    "aliases": [
+        "mute"
+    ],
+    "description": "Mutes the specified user",
+    "example": "!mute <user>"
+}

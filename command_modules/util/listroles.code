@@ -1,0 +1,10 @@
+function(args, msg) {
+    let roles = selfassignroles.get(msg.guild.id);
+    console.log(roles);
+    let temp = "Self assignable roles:\n```\n";
+    roles.forEach(function(i) {
+        temp += (i.name+"\n");
+    });
+    temp += "```";
+    msg.channel.send(temp);
+}

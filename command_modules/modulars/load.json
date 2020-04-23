@@ -1,0 +1,9 @@
+{
+    "name": "Load",
+    "author": "Squidd",
+    "aliases": [
+        "load"
+    ],
+    "description": "Loads a command or module",
+    "example": "!load <command/module> <command/module name>"
+}

@@ -1,0 +1,9 @@
+{
+    "name": "ping",
+    "author": "Squidd",
+    "aliases": [
+        "ping"
+    ],
+    "description": "Shows the bots ping",
+    "example": "!ping"
+}

@@ -1,0 +1,23 @@
+function(args, msg) {
+    return msg.channel.send(msg.channel.id);
+    if(args.includes(" ")) args = args.split(" ");
+    var usr = msg.mentions.members.first() || msg.guild.members.find(usr => usr.displayName.toLowerCase().includes(args[0]));
+    if(!usr) return msg.channel.send(`User \`${args[0]}\` not found!`);
+    msg.channel.send({
+            "embed": {
+                "title": ":gun:Ban log!",
+                "description": usr.user.tag,
+                "color": 16748526,
+                "timestamp": new Date(),
+                "thumbnail": {
+                    "url": usr.user.avatarURL
+                },
+                "fields": [
+                    {
+                        "name":"ID",
+                        "value":usr.user.id
+                    }
+                ]
+            }
+            });
+}

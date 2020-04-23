@@ -1,0 +1,16 @@
+function(args, msg) {
+    if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send("You don't have permission to do this!");
+    if(args.includes(" ")) args = args.split(" ");
+    if(!args[0]) return msg.channel.send(`Enter a command you need help with!`);
+
+    fs.readdirSync(modules).forEach(function(i) {
+        fs.readdirSync(`${modules}${i}`).forEach(function(n) {
+            if(n.split('.')[0] == args) {
+                if(n.split('.')[1] == 'json') {
+                    var jsonDat = JSON.parse(fs.readFileSync(`${modules}${i}/${n}`));
+                    msg.channel.send(`Usage: \`${jsonDat.example}\``);
+                }
+            }
+        });
+    });
+}

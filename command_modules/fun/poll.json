@@ -1,0 +1,9 @@
+{
+    "name": "Poll",
+    "author": "Squidd",
+    "aliases": [
+        "poll"
+    ],
+    "description": "Takes a poll",
+    "example": "!poll <time in minutes> <question in quotes> <options in quotes>"
+}

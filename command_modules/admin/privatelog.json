@@ -1,0 +1,9 @@
+{
+    "name": "Private Log",
+    "author": "Squidd",
+    "aliases": [
+        "privatelog"
+    ],
+    "description": "Specifies to channel to post private logs in",
+    "example": "!privatelog <channel name>"
+}

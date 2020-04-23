@@ -1,0 +1,9 @@
+{
+    "name": "Modules",
+    "author": "Squidd",
+    "aliases": [
+        "modules"
+    ],
+    "description": "Shows all or just the active modules",
+    "example": "!modules <all/active>"
+}

@@ -1,0 +1,9 @@
+{
+    "name": "Get Role",
+    "author": "Squidd",
+    "aliases": [
+        "iam"
+    ],
+    "description": "Gives the user an assignable role",
+    "example": "!iam <role name>"
+}

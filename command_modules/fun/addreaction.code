@@ -1,0 +1,10 @@
+async function(args, msg) {
+    if(!msg.member.hasPermission("ADMINISTRATOR")) return msg.channel.send(`You don't have permission to do that!`);
+    if(args.includes(" ")) args = args.split(" ");
+    
+    if(args.length <= 1) {
+        msg.channel.send("You need to add a reaction to listen for AND the response!");
+    } else {
+        fs.writeFile(`./${msg.guild.id}/reactions/${args[0]}`, args.slice(1).join(" "));
+    }
+}

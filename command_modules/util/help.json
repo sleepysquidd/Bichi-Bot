@@ -1,0 +1,9 @@
+{
+    "name": "Help",
+    "author": "Squidd",
+    "aliases": [
+        "help"
+    ],
+    "description": "Shows details about the command",
+    "example": "!help <command name>"
+}

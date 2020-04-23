@@ -1,0 +1,9 @@
+{
+    "name": "Welcome Channel",
+    "author": "Squidd",
+    "aliases": [
+        "welcome"
+    ],
+    "description": "Selects the channel to welcome users into!",
+    "example": "!welcome <channel name>"
+}

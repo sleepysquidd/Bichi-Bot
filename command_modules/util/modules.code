@@ -1,0 +1,26 @@
+async function(args, msg) {
+    if(args.includes(" ")) args = args.split(" ");
+
+    if(args[0] == "all") {
+        var activeMods = "";
+        fs.readdirSync(modules).forEach(function(i) {
+            activeMods += (i+"\n");
+            console.log(""+i);
+        });
+        msg.channel.send("All modules on server: \n"+"```\n"+activeMods+"```");
+    } else if (args[0] == "active") {
+        var cmds = Object.keys(commands);
+        var activeMods = [];
+        console.log(cmds);
+        fs.readdirSync(modules).forEach(function(i) {
+            fs.readdirSync(`${modules}/${i}`).forEach(function(n) {
+                for(var j=0;j<cmds.length;j++) {
+                    if(cmds[j]==n) {
+                        if(!activeMods.includes(i)) activeMods.push(i);
+                    }
+                }
+            });
+        });
+        msg.channel.send("Modules with at least one command active: \n```\n"+activeMods.join("\n")+"```");
+    }
+}

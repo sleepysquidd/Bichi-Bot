@@ -1,0 +1,9 @@
+{
+    "name": "Add Reaction",
+    "author": "Squidd",
+    "aliases": [
+        "addreaction"
+    ],
+    "description": "Adds a reaction to a single word!",
+    "example": "!addreaction <target word> <reaction phrase>"
+}

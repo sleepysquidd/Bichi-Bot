@@ -1,0 +1,9 @@
+{
+    "name": "Unmute",
+    "author": "Squidd",
+    "aliases": [
+        "unmute"
+    ],
+    "description": "Unmutes the specified user",
+    "example": "!unmute <user>"
+}

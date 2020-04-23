@@ -1,0 +1,9 @@
+{
+    "name": "Kick",
+    "author": "Squidd",
+    "aliases": [
+        "kick"
+    ],
+    "description": "Kicks the specified user",
+    "example": "!kick <user>"
+}

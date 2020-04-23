@@ -1,0 +1,9 @@
+{
+    "name": "Reload",
+    "author": "Squidd",
+    "aliases": [
+        "reload"
+    ],
+    "description": "Reloads a command or module",
+    "example": "!reload <command/module> <command/module name>"
+}

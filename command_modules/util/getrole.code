@@ -1,0 +1,18 @@
+function(args, msg) {
+    if(!args[0]) return msg.channel.send(`You need to specify a role!`);
+    if(!args[1]) args = args[0];
+
+    try {
+        var roles = selfassignroles.get(msg.guild.id);
+        roles.forEach(function(i) {
+            if(i.name.toLowerCase().includes(args)) {
+                var role = msg.guild.roles.find(r => r.id == i.id);
+                msg.member.addRole(role);
+                msg.channel.fetchMessages({limit: 1})
+                .then(messages => msg.channel.bulkDelete(messages));
+            }
+        });
+    } catch(err) {
+        console.log(`No self assign role for this server!`);
+    }
+}
